@@ -11,5 +11,5 @@ class User(Base):
     email=Column(String(255),unique=True,nullable=True)
     password=Column(String(255),unique=True,nullable=True)
 
-    documents = relationship("Document",back_populates="user")
+    documents = relationship("Document",back_populates="user")  
     
