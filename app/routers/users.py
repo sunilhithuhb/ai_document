@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends,UploadFile, File, HTTPException
 from sqlalchemy.orm import Session
+import os
+import shutil
 
 from app.database import get_db
 from app.models.user import User
@@ -14,7 +16,7 @@ router = APIRouter(
 
 @router.post("/", response_model=UserResponse)
 def create_user(
-    user: UserCreate,
+    upload: UserCreate,
     db: Session = Depends(get_db)
 ):
     new_user = User(
