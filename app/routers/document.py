@@ -18,7 +18,7 @@ router = APIRouter(
 @router.post("/upload", response_model=DocumentResponse)
 def upload_document(
     file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db) 
 ):
     # 1. Validate file type
     if file.content_type != "application/pdf":

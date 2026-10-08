@@ -14,5 +14,5 @@ class Document(Base):
         ForeignKey("users.id"),
         nullable=False
     )
-
+    chunks=relationship("Documentchunk",back_populates="document",cascade="all,delete-orphan")
     user = relationship("User",back_populates='documents')
